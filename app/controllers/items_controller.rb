@@ -21,6 +21,23 @@ class ItemsController < ApplicationController
 		end
 	end
 
+	def edit
+	end
+
+	def update
+		if @item.update(item_params)
+			redirect_to item_path(@item)
+		else
+			render "edit"
+		end
+	end
+
+	def destory
+		@item.destory
+		redirect_to root_path
+	end
+					
+
 	private
 	def item_params
 		params.require(:item).permit(:title, :description)
